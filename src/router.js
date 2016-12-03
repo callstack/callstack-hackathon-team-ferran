@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import GarbageScreen from './screens/GarbageScreen';
 import GarbageSchedule from './screens/GarbageScheduleScreen';
 import GarbageMonster from './screens/GarbageMonsterScreen';
+import GarbageBeacon from './screens/GarbageBeacon';
 
 /**
  * This is where we map route names to route components. Any React
@@ -16,5 +17,6 @@ export default createRouter(() => ({
   home: () => HomeScreen,
   garbage: () => GarbageScreen,
   garbage_schedule: () => GarbageSchedule,
+  garbage_beacon: () => GarbageBeacon,
   garbage_monster: () => GarbageMonster
 }));

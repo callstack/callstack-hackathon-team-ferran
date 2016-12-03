@@ -1,5 +1,5 @@
 import Slack from './Slack';
-import Config from 'react-native-config';
+const SLACK_WEB_HOOK = 'https://hooks.slack.com/services/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';
 
 export function notify(
   text: string,
@@ -9,5 +9,5 @@ export function notify(
   emoji: string = ':put_litter_in_its_place:',
 ) {
 
-  new Slack(Config.SLACK_WEB_HOOK).post(text, channel, username, emoji, attachments);
+  new Slack(SLACK_WEB_HOOK).post(text, channel, username, emoji, attachments);
 }

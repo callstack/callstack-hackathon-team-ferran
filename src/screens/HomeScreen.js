@@ -40,7 +40,7 @@ export default class HomeScreen extends Component {
           icon={{name: 'bell-o', type: 'font-awesome'}}
           textStyle={styles.buttonText}
           onPress={() => {
-            this.props.navigator.push(Router.getRoute('garbage_monster', { who: 'ferran' }));
+            this.props.navigator.push(Router.getRoute('garbage_beacon'));
           }}
         />
       </View>

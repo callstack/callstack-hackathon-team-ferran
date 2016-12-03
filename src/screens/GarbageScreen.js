@@ -28,7 +28,7 @@ export default class GarbageScreen extends Component {
   };
   
   _onBarCodeRead = (result) => {
-    this.props.navigator.push(
+    this.props.navigator.replace(
       Router.getRoute('garbage_schedule', { data: JSON.parse(result.data) })
     )
   };
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   cancelButton: {
-    backgroundColor: '#B71C1C',
+    backgroundColor: '#FF4081',
     marginBottom: 48,
     paddingHorizontal: 56,
   },

@@ -1,5 +1,9 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import {
+  Platform,
+  StatusBar,
+  View,
+} from 'react-native';
 import {
   NavigationStyles,
   NavigationProvider,
@@ -16,14 +20,24 @@ const defaultRouteConfig = {
   styles: {
     ...defaultAnimation,
   },
+  navigationBar: {
+    backgroundColor: '#2196F3',
+    tintColor: 'white',
+  },
 };
 
 const Root = () => (
   <NavigationProvider router={router}>
+    <StatusBar
+      backgroundColor="#1976D2"
+      barStyle="light-content"
+    />
+    <View style={{flex: 1, backgroundColor: '#EEEEEE'}}>
       <StackNavigation
         initialRoute="home"
         defaultRouteConfig={defaultRouteConfig}
       />
+    </View>
   </NavigationProvider>
 );
 
