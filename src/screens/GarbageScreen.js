@@ -28,8 +28,6 @@ export default class GarbageScreen extends Component {
   };
   
   _onBarCodeRead = (result) => {
-    console.log(result.data);
-    console.log(JSON.parse(result.data));
     this.props.navigator.push(
       Router.getRoute('garbage_schedule', { data: JSON.parse(result.data) })
     )
@@ -84,14 +82,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
   },
   cancelButton: {
     backgroundColor: '#B71C1C',
