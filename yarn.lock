@@ -3884,6 +3884,10 @@ react-mixin@^3.0.5:
     object-assign "^4.0.1"
     smart-mixin "^2.0.0"
 
+react-native-beacons-android@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-beacons-android/-/react-native-beacons-android-2.1.0.tgz#20ad7770e79ec89d4fd6d22f9cf2af261e7698c2"
+
 react-native-camera@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.4.0.tgz#24068858c2c7b4141398024a966eb30de4436e8b"
@@ -3909,9 +3913,9 @@ react-native-elements@0.7.0:
   dependencies:
     react-native-tab-navigator "^0.3.3"
 
-react-native-slack-webhook@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-slack-webhook/-/react-native-slack-webhook-0.0.5.tgz#deb1dc742eb6c70deb4326362c82ea45e9b6a87a"
+react-native-ibeacon@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-ibeacon/-/react-native-ibeacon-0.6.0.tgz#9b89af227a4a8be537effeff556e2349a36a97d8"
 
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"
