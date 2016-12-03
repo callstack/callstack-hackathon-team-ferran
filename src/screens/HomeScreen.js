@@ -8,6 +8,7 @@ import {
   Button,
 } from 'react-native-elements'
 import Router from '../router';
+import { notify } from '../services/slackService';
 
 export default class HomeScreen extends Component {
   static route = {
@@ -40,6 +41,16 @@ export default class HomeScreen extends Component {
           textStyle={styles.buttonText}
           onPress={() => {
             this.props.navigator.push(Router.getRoute('conference'));
+          }}
+        />
+        <Button
+          title="Slack User"
+          backgroundColor="#009688"
+          buttonStyle={styles.button}
+          icon={{name: 'slack', type: 'font-awesome'}}
+          textStyle={styles.buttonText}
+          onPress={() => {
+            notify('test channel', 'test message');
           }}
         />
       </View>
