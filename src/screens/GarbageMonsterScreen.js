@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import { notify } from '../services/slackService';
+import { notify, getSlackNameByName } from '../services/slackService';
 import { getPhotoByName } from '../services/imagesService';
 import FloatingHearts from '../components/FloatingHearts';
 
@@ -13,7 +13,7 @@ export default class GarbageMonsterScreen extends Component {
     },
   };
 
-  state = { 
+  state = {
     showHearts: false,
   }
 
@@ -21,7 +21,9 @@ export default class GarbageMonsterScreen extends Component {
     this.setState({
       showHearts: true,
     });
-    notify(`:thumbsup: Hey <@ferrannp>, you're the best Garbage Monster ever!!!`, [
+    const { who } = this.props.route.params;
+    const slackUser = getSlackNameByName(who);
+    notify(`:thumbsup: Hey <@${slackUser}>, you're the best Garbage Monster ever!!!`, [
       {
         image_url: 'https://media.giphy.com/media/26BkNituin1dca6GI/giphy.gif',
         color: "#39ff80"
@@ -30,7 +32,9 @@ export default class GarbageMonsterScreen extends Component {
   };
 
   onBlameHandler = () => {
-    notify(`:sos: Hey <@ferrannp>, take care of the garbage can!!!`, [
+    const { who } = this.props.route.params;
+    const slackUser = getSlackNameByName(who);
+    notify(`:sos: Hey <@${slackUser}>, take care of the garbage can!!!`, [
       {
         image_url: 'https://media.giphy.com/media/oBJ3iITOA7mBG/giphy.gif',
         color: "#ff2d38"
@@ -65,7 +69,7 @@ export default class GarbageMonsterScreen extends Component {
         />
         {showHearts ? <FloatingHearts /> : null}
       </View>
-      
+
     );
   }
 }

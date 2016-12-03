@@ -11,3 +11,17 @@ export function notify(
 
   new Slack(SLACK_WEB_HOOK).post(text, channel, username, emoji, attachments);
 }
+
+export function getSlackNameByName(name: string) {
+  const names = {
+    ferran: 'ferrannp',
+    pawlucci: 'pawlucci',
+    jakub: 'kuba',
+    luke: 'luke',
+    mike: 'mike',
+    mike2: 'mike.ch',
+    radek: 'radek',
+    dratwa: 'dratwa'
+  };
+  return names[name];
+}
