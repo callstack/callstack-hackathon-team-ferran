@@ -3888,6 +3888,10 @@ react-native-camera@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.4.0.tgz#24068858c2c7b4141398024a966eb30de4436e8b"
 
+react-native-config@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.1.2.tgz#cf6e3e312845f411fe9ef42f3ea283c576078681"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3904,6 +3908,10 @@ react-native-elements@0.7.0:
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.7.0.tgz#f3a7ea4de0b7ccae4c5fe8eba698a58bb4138ef1"
   dependencies:
     react-native-tab-navigator "^0.3.3"
+
+react-native-slack-webhook@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-slack-webhook/-/react-native-slack-webhook-0.0.5.tgz#deb1dc742eb6c70deb4326362c82ea45e9b6a87a"
 
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"

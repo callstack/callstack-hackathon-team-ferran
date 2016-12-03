@@ -5,6 +5,7 @@ import {
 import HomeScreen from './screens/HomeScreen';
 import GarbageScreen from './screens/GarbageScreen';
 import GarbageSchedule from './screens/GarbageScheduleScreen';
+import GarbageMonster from './screens/GarbageMonsterScreen';
 import GarbageBeacon from './screens/GarbageBeacon';
 
 /**
@@ -17,4 +18,5 @@ export default createRouter(() => ({
   garbage: () => GarbageScreen,
   garbage_schedule: () => GarbageSchedule,
   garbage_beacon: () => GarbageBeacon,
+  garbage_monster: () => GarbageMonster
 }));

@@ -10,12 +10,13 @@ import {
 import Router from '../router';
 
 export default class HomeScreen extends Component {
+
   static route = {
     navigationBar: {
       visible: false,
     },
   };
-  
+
   render() {
     return (
       <View style={styles.container}>
