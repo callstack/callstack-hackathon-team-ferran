@@ -6,6 +6,8 @@ import {
   DeviceEventEmitter,
 } from 'react-native';
 import Beacons from 'react-native-beacons-android'
+import { Button } from 'react-native-elements';
+import Router from '../router';
 
 import config from '../beaconConfig'
 
@@ -43,7 +45,7 @@ export default class GarbageMonster extends Component {
         return;
       }
       this._stopRangingBeaconsInRegion(); // We do not need it anymore
-      this.setState({beaconData: isFound, isConnecting: false});
+      this.setState({beaconData: isFound, isConnecting: false, userName });
     }
   };
   
@@ -67,14 +69,24 @@ export default class GarbageMonster extends Component {
     const { isConnecting, beaconData } = this.state;
     return (
       <View style={styles.container}>
-        {isConnecting ?
-          <Text style={styles.beaconText}>Connecting to Beacon...</Text> :
+        {isConnecting  && (<Text style={styles.beaconText}>Connecting to Beacon...</Text>)}
+        {!isConnecting && (
           <View>
             <Text style={styles.beaconText}>FOUND BEACON</Text>
             <Text style={styles.beaconText}>Distance: {beaconData.distance}</Text>
             <Text style={styles.beaconText}>Proximity: {beaconData.proximity}</Text>
+            <Button
+              title="Poke the Monster"
+              backgroundColor="#E91E63"
+              buttonStyle={styles.button}
+              icon={{name: 'bullhorn', type: 'font-awesome'}}
+              textStyle={styles.buttonText}
+              onPress={() => {
+                this.props.navigator.replace(Router.getRoute('garbage_monster', { who: this.state.userName }));
+              }}
+            />
           </View>
-        }
+        )}
       </View>
     )
   }

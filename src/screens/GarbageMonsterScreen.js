@@ -18,7 +18,7 @@ export default class GarbageMonsterScreen extends Component {
         image_url: 'https://media.giphy.com/media/26BkNituin1dca6GI/giphy.gif',
         color: "#39ff80"
       }
-    ], '#garbage_private');
+    ], '#inglorious-bastards');
   };
 
   onBlameHandler = () => {
@@ -27,7 +27,7 @@ export default class GarbageMonsterScreen extends Component {
         image_url: 'https://media.giphy.com/media/oBJ3iITOA7mBG/giphy.gif',
         color: "#ff2d38"
       }
-    ], '#garbage_private');
+    ], '#inglorious-bastards');
   };
 
   render() {

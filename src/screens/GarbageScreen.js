@@ -28,7 +28,7 @@ export default class GarbageScreen extends Component {
   };
   
   _onBarCodeRead = (result) => {
-    this.props.navigator.push(
+    this.props.navigator.replace(
       Router.getRoute('garbage_schedule', { data: JSON.parse(result.data) })
     )
   };
