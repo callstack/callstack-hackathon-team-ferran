@@ -11,6 +11,6 @@ const photosMap = {
 
 const defaultPhoto = 'https://www.iconexperience.com/_img/g_collection_png/standard/128x128/hipster.png';
 
-export default (name: string) => {
+export function getPhotoByName(name: string) {
   return photosMap[name] || defaultPhoto;
-};
+}

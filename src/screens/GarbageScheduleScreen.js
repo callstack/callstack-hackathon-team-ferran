@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import _ from 'lodash';
 
-import getImages from '../images/getPhotoByName';
+import { getPhotoByName } from '../services/imagesService';
 
 export default class GarbageScheduleScreen extends Component {
   static route = {
@@ -17,7 +17,7 @@ export default class GarbageScheduleScreen extends Component {
   render() {
     const { route: { params } } = this.props;
     const schedule = params.data.schedule;
-    const garbageList = _.map(schedule, (item, key) => ({ ...item, name: key, avatar_url: getImages(key)}));
+    const garbageList = _.map(schedule, (item, key) => ({ ...item, name: key, avatar_url: getPhotoByName(key)}));
 
     return (
       <View style={{flex: 1 }}>
