@@ -20,7 +20,7 @@ export default class GarbageScheduleScreen extends Component {
     const garbagetList = _.map(schedule, (item, key) => ({ ...item, name: key, avatar_url: getImages(key)}));
 
     return (
-      <View style={{flex: 1, padding: 20 }}>
+      <View style={{flex: 1 }}>
         <List containerStyle={{marginBottom: 20}}>
           {
             garbagetList.map((l, i) => (
