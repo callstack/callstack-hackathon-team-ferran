@@ -4,6 +4,7 @@ import {
     Button
 } from 'react-native-elements'
 import Router from '../router';
+import garbageMock from '../mocks/garbageMock.json';
 
 export default class HomeScreen extends Component {
   static route = {
@@ -19,7 +20,7 @@ export default class HomeScreen extends Component {
             backgroundColor="#0090F7"
             icon={{name: 'trash', type: 'font-awesome'}}
             onPress={() => {
-              this.props.navigator.push(Router.getRoute('garbageSchedule'));
+              this.props.navigator.push(Router.getRoute('garbageSchedule', { data: garbageMock }));
             }}
         />
       </View>
