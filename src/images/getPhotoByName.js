@@ -9,6 +9,8 @@ const photosMap = {
   dratwa: 'https://avatars3.githubusercontent.com/u/16336501?v=3&s=400'
 };
 
+const defaultPhoto = 'https://www.iconexperience.com/_img/g_collection_png/standard/128x128/hipster.png';
+
 export default (name: string) => {
-  return photosMap[name];
+  return photosMap[name] | defaultPhoto;
 };
