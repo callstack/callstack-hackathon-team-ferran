@@ -15,7 +15,6 @@
     "react-native-camera": "^0.4.0",
     "react-native-config": "^0.1.2",
     "react-native-elements": "0.7.0",
-    "react-native-slack-webhook": "0.0.5",
     "react-native-vector-icons": "3.0.0"
   },
   "devDependencies": {
