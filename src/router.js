@@ -3,6 +3,7 @@ import {
 } from '@exponent/ex-navigation';
 
 import HomeScreen from './screens/HomeScreen';
+import GarbageScreen from './screens/GarbageScreen';
 import GarbageSchedule from './screens/GarbageScheduleScreen';
 
 /**
@@ -12,5 +13,6 @@ import GarbageSchedule from './screens/GarbageScheduleScreen';
  */
 export default createRouter(() => ({
   home: () => HomeScreen,
+  garbage: () => GarbageScreen,
   garbageSchedule: () => GarbageSchedule
 }));

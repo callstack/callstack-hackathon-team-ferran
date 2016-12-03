@@ -1,29 +1,54 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, {Component} from 'react';
 import {
-    Button
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import {
+  Button,
 } from 'react-native-elements'
 import Router from '../router';
-import garbageMock from '../mocks/garbageMock.json';
 
 export default class HomeScreen extends Component {
   static route = {
     navigationBar: {
-      title: 'Inglorious Bastards',
+      visible: false,
     },
   };
+  
   render() {
     return (
-      <View style={{flex: 1, padding: 20 }}>
+      <View style={styles.container}>
+        <Text style={styles.title}>
+          Inglorious Bastards
+        </Text>
         <Button
-            title="Garbage"
-            backgroundColor="#0090F7"
-            icon={{name: 'trash', type: 'font-awesome'}}
-            onPress={() => {
-              this.props.navigator.push(Router.getRoute('garbageSchedule', { data: garbageMock }));
-            }}
+          title="Garbage"
+          backgroundColor="#0090F7"
+          icon={{name: 'trash', type: 'font-awesome'}}
+          textStyle={styles.buttonText}
+          onPress={() => {
+            this.props.navigator.push(Router.getRoute('garbage'));
+          }}
         />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+  title: {
+    alignSelf: 'center',
+    fontSize: 24,
+    marginVertical: 48,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  buttonText: {
+    fontSize: 18,
+  }
+});

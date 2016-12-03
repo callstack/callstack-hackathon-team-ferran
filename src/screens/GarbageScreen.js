@@ -14,54 +14,53 @@ import {
 } from 'react-native-elements';
 import Camera from 'react-native-camera';
 
+import Router from '../router';
+
 export default class GarbageScreen extends Component {
+  static route = {
+    navigationBar: {
+      title: 'Garbage',
+    },
+  };
   
   state = {
     showCamera: false,
   };
   
-  initCamera = () => {
-    this.setState({ showCamera: true });
+  _onBarCodeRead = (data) => {
+    this.props.navigator.push(Router.getRoute('garbage'), { data })
   };
   
-  onBarCodeRead = (data) => {
-    console.log(data);
+  _goToHome = () => {
+    this.props.navigator.pop();
   };
   
   render() {
     return (
-      <View style={styles.container}>
+      <Camera
+        ref={(cam) => {
+        this.camera = cam;
+      }}
+        style={styles.preview}
+        onBarCodeRead={this._onBarCodeRead}
+        aspect={Camera.constants.Aspect.fill}
+      >
+        <View style={styles.rectangleContainer}>
+          <View style={styles.rectangle}/>
+        </View>
         <Button
           raised
-          title="SCAN NOW"
-          onPress={this.initCamera}
+          title="Cancel"
+          buttonStyle={styles.cancelButton}
+          textStyle={styles.textButton}
+          onPress={this._goToHome}
         />
-        {this.state.showCamera ?
-          <Camera
-            ref={(cam) => {
-            this.camera = cam;
-          }}
-            style={styles.preview}
-            onBarCodeRead={this.onBarCodeRead}
-            aspect={Camera.constants.Aspect.fill}
-          >
-            <View style={styles.rectangleContainer}>
-              <View style={styles.rectangle}/>
-            </View>
-          </Camera>
-          : null
-        }
-      </View>
+      </Camera>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   rectangleContainer: {
     flex: 1,
     alignItems: 'center',
@@ -89,5 +88,13 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 10,
     margin: 40
+  },
+  cancelButton: {
+    backgroundColor: '#B71C1C',
+    marginBottom: 48,
+    paddingHorizontal: 56,
+  },
+  textButton: {
+    fontSize: 18,
   }
 });
