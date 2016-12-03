@@ -5,8 +5,9 @@ import {
   View,
   DeviceEventEmitter,
 } from 'react-native';
+import Beacons from 'react-native-beacons-android'
 
-import Beacons from 'react-native-ibeacon';
+import config from '../beaconConfig'
 
 export default class GarbageMonster extends Component {
   static route = {
@@ -18,58 +19,76 @@ export default class GarbageMonster extends Component {
     isConnecting: true,
     beaconData: null,
   };
+  
+  async componentDidMount() {
+    Beacons.detectIBeacons();
+    try {
+      await Beacons.startRangingBeaconsInRegion(config.region.identifier, config.region.uuid);
+      console.log(`Beacons ranging started succesfully!`)
+    } catch (error) {
+      console.log(`Beacons ranging not started, error: ${error}`)
+    }
 
-  componentDidMount() {
-    // Request for authorization while the app is open
-    Beacons.requestWhenInUseAuthorization();
-
-    Beacons.startMonitoringForRegion(region);
-    Beacons.startRangingBeaconsInRegion(region);
-
-    Beacons.startUpdatingLocation();
-
-    // Listen for beacon changes
-    const subscription = DeviceEventEmitter.addListener(
-      'beaconsDidRange',
-      (data) => {
-        // data.region - The current region
-        // data.region.identifier
-        // data.region.uuid
-
-        // data.beacons - Array of all beacons inside a region
-        //  in the following structure:
-        //    .uuid
-        //    .major - The major version of a beacon
-        //    .minor - The minor version of a beacon
-        //    .rssi - Signal strength: RSSI value (between -100 and 0)
-        //    .proximity - Proximity value, can either be "unknown", "far", "near" or "immediate"
-        //    .accuracy - The accuracy of a beacon
-        this.setState({
-          beaconData: {
-            region: data.region,
-            identifier: data.region.identifier,
-            uuid: data.region.uuid,
-            beacons: data.beacons,
-            isConnecting: false,
-          }
-        });
-      }
-    );
+    DeviceEventEmitter.addListener('beaconsDidRange', this._beaconsDidRange);
   }
-
+  
+  _beaconsDidRange = (data) => {
+    console.log("Beacons found", data);
+    const beacons = data.beacons;
+    if(beacons.length > 0) {
+      const beaconId = Object.keys(config.map)[0];
+      const userName = config.map[beaconId];
+      const isFound = beacons.find(item => item.major == beaconId);
+      if (!isFound) {
+        return;
+      }
+      this._stopRangingBeaconsInRegion(); // We do not need it anymore
+      this.setState({beaconData: isFound, isConnecting: false});
+    }
+  };
+  
+  _stopRangingBeaconsInRegion = async () => {
+    DeviceEventEmitter.removeListener(
+      'beaconsDidRange', this._beaconsDidRange
+    );
+    try {
+      await Beacons.stopRangingBeaconsInRegion(config.region.identifier, config.region.uuid);
+      console.log(`Beacons monitoring stopped successfully`)
+    } catch (error) {
+      console.log(`Beacons monitoring stopped with an error: ${error}`)
+    }
+  };
+  
+  componentWillUnmount() {
+    this._stopRangingBeaconsInRegion();
+  }
+  
   render() {
     const { isConnecting, beaconData } = this.state;
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         {isConnecting ?
-          <Text>Connecting to Beacon...</Text> :
+          <Text style={styles.beaconText}>Connecting to Beacon...</Text> :
           <View>
-            <Text>Region: {beaconData.region}</Text>
-            <Text>Identifier: {beaconData.identifier}</Text>
-            <Text>UUID: {beaconData.uuid}</Text>
+            <Text style={styles.beaconText}>FOUND BEACON</Text>
+            <Text style={styles.beaconText}>Distance: {beaconData.distance}</Text>
+            <Text style={styles.beaconText}>Proximity: {beaconData.proximity}</Text>
           </View>
         }
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  beaconText: {
+    fontSize: 16,
+    color: 'black',
+  }
+});
+

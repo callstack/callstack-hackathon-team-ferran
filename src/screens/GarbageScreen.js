@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   cancelButton: {
-    backgroundColor: '#B71C1C',
+    backgroundColor: '#FF4081',
     marginBottom: 48,
     paddingHorizontal: 56,
   },

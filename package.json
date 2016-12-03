@@ -12,6 +12,7 @@
     "lodash": "4.17.2",
     "react": "15.4.1",
     "react-native": "0.39.0",
+    "react-native-beacons-android": "^2.1.0",
     "react-native-camera": "^0.4.0",
     "react-native-elements": "0.7.0",
     "react-native-ibeacon": "0.6.0",
