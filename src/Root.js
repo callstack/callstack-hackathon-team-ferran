@@ -28,7 +28,7 @@ const defaultRouteConfig = {
 const Root = () => (
   <NavigationProvider router={router}>
     <StatusBar
-      backgroundColor="#0D47A1"
+      backgroundColor="#1976D2"
       barStyle="light-content"
     />
       <StackNavigation
