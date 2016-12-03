@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import { notify, getSlackNameByName } from '../services/slackService';
 import { getPhotoByName } from '../services/imagesService';
-import FloatingHearts from '../components/FloatingHearts';
 
 export default class GarbageMonsterScreen extends Component {
 
@@ -13,14 +12,7 @@ export default class GarbageMonsterScreen extends Component {
     },
   };
 
-  state = {
-    showHearts: false,
-  }
-
   onEndorseHandler = () => {
-    this.setState({
-      showHearts: true,
-    });
     const { who } = this.props.route.params;
     const slackUser = getSlackNameByName(who);
     notify(`:thumbsup: Hey <@${slackUser}>, you're the best Garbage Monster ever!!!`, [
@@ -44,7 +36,6 @@ export default class GarbageMonsterScreen extends Component {
 
   render() {
     const { who } = this.props.route.params;
-    const { showHearts } = this.state;
     return (
       <View style={styles.container}>
         <Image source={{ uri: getPhotoByName(who) }} style={styles.image} />
@@ -67,7 +58,6 @@ export default class GarbageMonsterScreen extends Component {
           textStyle={styles.buttonText}
           onPress={this.onBlameHandler}
         />
-        {showHearts ? <FloatingHearts /> : null}
       </View>
 
     );

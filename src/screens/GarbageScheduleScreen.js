@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import _ from 'lodash';
 import Router from '../router';
@@ -25,7 +25,7 @@ export default class GarbageScheduleScreen extends Component {
 
     return (
       <View style={{flex: 1 }}>
-        <List containerStyle={{marginBottom: 20}}>
+        <List containerStyle={styles.containerStyle}>
           {
             garbageList.map((l, i) => (
               <ListItem
@@ -35,6 +35,9 @@ export default class GarbageScheduleScreen extends Component {
                 title={l.name}
                 subtitle={GarbageScheduleScreen.getSubtitle(l.from, l.to)}
                 hideChevron
+                titleStyle={styles.title}
+                subtitleStyle={styles.subtitle}
+                avatarStyle={styles.avatar}
                 onPress={() => {
                   this.props.navigator.push(Router.getRoute('garbage_monster', { who: l.name }));
                 }}
@@ -45,5 +48,26 @@ export default class GarbageScheduleScreen extends Component {
       </View>
     );
   }
-
 }
+
+const styles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    marginTop: 10,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    borderBottomColor: '#cbd2d9',
+  },
+  avatar: {
+    alignSelf: 'center',
+    height: 56,
+    width: 56,
+    borderRadius: 56/2,
+  },
+  title: {
+    fontSize: 20,
+  },
+  subtitle: {
+    fontSize: 16,
+  }
+});
