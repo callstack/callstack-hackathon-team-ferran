@@ -4,6 +4,6 @@
 
 import { AppRegistry } from 'react-native';
 
-import App from './src/App';
+import Root from './src/Root';
 
-AppRegistry.registerComponent('CallstackHackaton', () => App);
+AppRegistry.registerComponent('CallstackHackaton', () => Root);
