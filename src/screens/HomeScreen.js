@@ -20,15 +20,26 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          Inglorious Bastards
+          Garbage Collector
         </Text>
         <Button
-          title="Garbage"
+          title="Garbage Schedule"
           backgroundColor="#0090F7"
           icon={{name: 'trash', type: 'font-awesome'}}
+          buttonStyle={styles.button}
           textStyle={styles.buttonText}
           onPress={() => {
             this.props.navigator.push(Router.getRoute('garbage'));
+          }}
+        />
+        <Button
+          title="Garbage Monster"
+          backgroundColor="#E91E63"
+          buttonStyle={styles.button}
+          icon={{name: 'bell-o', type: 'font-awesome'}}
+          textStyle={styles.buttonText}
+          onPress={() => {
+            this.props.navigator.push(Router.getRoute('conference'));
           }}
         />
       </View>
@@ -40,6 +51,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+  },
+  button: {
+    marginBottom: 24,
   },
   title: {
     alignSelf: 'center',
