@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Platform,
-  StatusBar
+  StatusBar,
+  View,
 } from 'react-native';
 import {
   NavigationStyles,
@@ -31,10 +32,12 @@ const Root = () => (
       backgroundColor="#1976D2"
       barStyle="light-content"
     />
+    <View style={{flex: 1, backgroundColor: '#EEEEEE'}}>
       <StackNavigation
         initialRoute="home"
         defaultRouteConfig={defaultRouteConfig}
       />
+    </View>
   </NavigationProvider>
 );
 
