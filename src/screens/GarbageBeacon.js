@@ -101,6 +101,12 @@ const styles = StyleSheet.create({
   beaconText: {
     fontSize: 16,
     color: 'black',
+  },
+  button: {
+    marginVertical: 24,
+  },
+  buttonText: {
+    fontSize: 18,
   }
 });
 
