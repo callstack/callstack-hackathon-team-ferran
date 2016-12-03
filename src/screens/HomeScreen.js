@@ -8,9 +8,9 @@ import {
   Button,
 } from 'react-native-elements'
 import Router from '../router';
-import {notify} from '../services/slackService';
 
 export default class HomeScreen extends Component {
+
   static route = {
     navigationBar: {
       visible: false,
@@ -40,22 +40,7 @@ export default class HomeScreen extends Component {
           icon={{name: 'bell-o', type: 'font-awesome'}}
           textStyle={styles.buttonText}
           onPress={() => {
-            this.props.navigator.push(Router.getRoute('conference'));
-          }}
-        />
-        <Button
-          title="Slack User"
-          backgroundColor="#009688"
-          buttonStyle={styles.button}
-          icon={{name: 'slack', type: 'font-awesome'}}
-          textStyle={styles.buttonText}
-          onPress={() => {
-            notify(`:sos: Hey <@ferrannp>, take care of the garbage can!!!`, [
-              {
-                image_url: 'https://media.giphy.com/media/oBJ3iITOA7mBG/giphy.gif',
-                color: "#ff2d38"
-              }
-            ], '#garbage_private');
+            this.props.navigator.push(Router.getRoute('garbage_monster', { who: 'ferran' }));
           }}
         />
       </View>
