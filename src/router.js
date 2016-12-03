@@ -14,5 +14,5 @@ import GarbageSchedule from './screens/GarbageScheduleScreen';
 export default createRouter(() => ({
   home: () => HomeScreen,
   garbage: () => GarbageScreen,
-  garbageSchedule: () => GarbageSchedule
+  garbage_schedule: () => GarbageSchedule
 }));

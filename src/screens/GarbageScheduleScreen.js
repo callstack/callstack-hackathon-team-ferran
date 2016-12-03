@@ -17,13 +17,13 @@ export default class GarbageScheduleScreen extends Component {
   render() {
     const { route: { params } } = this.props;
     const schedule = params.data.schedule;
-    const garbagetList = _.map(schedule, (item, key) => ({ ...item, name: key, avatar_url: getImages(key)}));
+    const garbageList = _.map(schedule, (item, key) => ({ ...item, name: key, avatar_url: getImages(key)}));
 
     return (
       <View style={{flex: 1 }}>
         <List containerStyle={{marginBottom: 20}}>
           {
-            garbagetList.map((l, i) => (
+            garbageList.map((l, i) => (
               <ListItem
                 roundAvatar
                 avatar={{uri:l.avatar_url}}

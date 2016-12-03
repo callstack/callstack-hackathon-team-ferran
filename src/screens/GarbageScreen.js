@@ -27,8 +27,12 @@ export default class GarbageScreen extends Component {
     showCamera: false,
   };
   
-  _onBarCodeRead = (data) => {
-    this.props.navigator.push(Router.getRoute('garbage'), { data })
+  _onBarCodeRead = (result) => {
+    console.log(result.data);
+    console.log(JSON.parse(result.data));
+    this.props.navigator.push(
+      Router.getRoute('garbage_schedule', { data: JSON.parse(result.data) })
+    )
   };
   
   _goToHome = () => {
