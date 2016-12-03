@@ -19,7 +19,7 @@ export default class HomeScreen extends Component {
             backgroundColor="#0090F7"
             icon={{name: 'trash', type: 'font-awesome'}}
             onPress={() => {
-              this.props.navigator.push(Router.getRoute('garbage'));
+              this.props.navigator.push(Router.getRoute('garbageSchedule'));
             }}
         />
       </View>

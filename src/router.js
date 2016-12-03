@@ -3,6 +3,7 @@ import {
 } from '@exponent/ex-navigation';
 
 import HomeScreen from './screens/HomeScreen';
+import GarbageSchedule from './screens/GarbageScheduleScreen';
 
 /**
  * This is where we map route names to route components. Any React
@@ -11,4 +12,5 @@ import HomeScreen from './screens/HomeScreen';
  */
 export default createRouter(() => ({
   home: () => HomeScreen,
+  garbageSchedule: () => GarbageSchedule
 }));
