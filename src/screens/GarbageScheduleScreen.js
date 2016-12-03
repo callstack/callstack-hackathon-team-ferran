@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
+import { List, ListItem } from 'react-native-elements'
+import _ from 'lodash';
+
+import getImages from '../images/getPhotoByName';
 
 export default class GarbageScheduleScreen extends Component {
   static route = {
@@ -7,17 +11,31 @@ export default class GarbageScheduleScreen extends Component {
       title: 'Garbage Schedule',
     },
   };
-
+  static getSubtitle(from, to) {
+    return `from ${from} to ${to}`;
+  }
   render() {
+    const { route: { params } } = this.props;
+    const schedule = params.data.schedule;
+    const garbagetList = _.map(schedule, (item, key) => ({ ...item, name: key, avatar_url: getImages(key)}));
+
     return (
       <View style={{flex: 1, padding: 20 }}>
-        <Text>Garbage Schedule</Text>
-        <Text>
-          This is the data!
-          {Object.keys(this.props.route.params.data.schedule).length}
-        </Text>
+        <List containerStyle={{marginBottom: 20}}>
+          {
+            garbagetList.map((l, i) => (
+              <ListItem
+                roundAvatar
+                avatar={{uri:l.avatar_url}}
+                key={i}
+                title={l.name}
+                subtitle={GarbageScheduleScreen.getSubtitle(l.from, l.to)}
+                hideChevron
+              />
+            ))
+          }
+        </List>
       </View>
     );
   }
 }
-
