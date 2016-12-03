@@ -3905,6 +3905,10 @@ react-native-elements@0.7.0:
   dependencies:
     react-native-tab-navigator "^0.3.3"
 
+react-native-slack-webhook@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-slack-webhook/-/react-native-slack-webhook-0.0.5.tgz#deb1dc742eb6c70deb4326362c82ea45e9b6a87a"
+
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/react-native-tab-navigator/-/react-native-tab-navigator-0.3.3.tgz#b222bad21fbe773c8d28f9a0de30ce62b08724d3"
